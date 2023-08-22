@@ -1,0 +1,8 @@
+baseFolder: "~/code"
+targets:
+  - name: github
+    type: github
+    github:
+      apiUrl: "https://api.github.com"
+      apiToken: secret-key
+      syncStrategy: Owned
