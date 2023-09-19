@@ -1,6 +1,7 @@
 # Application
 
 config.yaml
+temp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

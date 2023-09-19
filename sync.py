@@ -1,18 +1,25 @@
-
 import os
 
 from src.config import read_config
-from src.provider import GithubProvider
+from src.provider import get_provider
+from src.cloner import Cloner
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 config = read_config(f"{script_dir}/config.yaml")
+cloner = Cloner(config)
 
 for target in config.targets:
-    match target.type:
-        case "github":
-            provider = GithubProvider(target.github)
+    # Read local repositories
+    local_repositories = cloner.list_local_repositories(target)
 
-    repositories = provider.list_repositories()
+    # Read remote repositories
+    provider = get_provider(target)
+    remote_repositories = provider.list_repositories()
 
-    for r in repositories:
-        print(f"- {r.uid}|{r.name}|{r.path}|{r.clone_url}")
+    print("local")
+    for r in local_repositories:
+        print(r)
+
+    print("remote")
+    for r in remote_repositories:
+        print(r)
