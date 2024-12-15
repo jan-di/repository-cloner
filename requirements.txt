@@ -1,4 +1,0 @@
-PyGithub
-pyyaml
-related
-GitPython

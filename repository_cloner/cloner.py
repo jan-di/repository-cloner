@@ -2,7 +2,7 @@ import os
 from os import path
 from git import Repo as GitRepo
 
-from src.config import Config, Target
+from repository_cloner.config import Config, Target
 
 
 class Repository:

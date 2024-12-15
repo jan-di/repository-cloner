@@ -1,6 +1,6 @@
 from github import Github, Auth
-from src.config import Target, GithubConfig
-from src.cloner import Repository
+from repository_cloner.config import Target, GithubConfig
+from repository_cloner.cloner import Repository
 
 
 def get_provider(target: Target):
@@ -22,6 +22,8 @@ class GithubProvider:
     def list_repositories(self) -> list:
         if self.strategy == "Owned":
             github_repos = list(self.github_api.get_user().get_repos())
+        else:
+            raise ValueError("Unknown strategy")
         repositories = []
 
         for github_repo in github_repos:
