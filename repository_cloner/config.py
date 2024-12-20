@@ -6,6 +6,7 @@ class GithubConfig(object):
     apiUrl = related.StringField(required=False)
     apiToken = related.StringField(required=False)
     syncStrategy = related.StringField(required=False)
+    ignoreArchived = related.BooleanField(required=False)
 
 
 @related.immutable

@@ -18,6 +18,7 @@ class GithubProvider:
         self.base_path = base_path
         self.github_api = Github(base_url=github_config.apiUrl, auth=auth)
         self.strategy = github_config.syncStrategy
+        self.ignore_archived = github_config.ignoreArchived
 
     def list_repositories(self) -> dict[str, Repository]:
         if self.strategy == "Owned":
@@ -28,6 +29,10 @@ class GithubProvider:
 
         for github_repo in github_repos:
             repo_id = str(github_repo.id)
+
+            if self.ignore_archived and github_repo.archived:
+                continue
+
             repositories[repo_id] = Repository(
                 uid=repo_id,
                 target_name=self.target_name,

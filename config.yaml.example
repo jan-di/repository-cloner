@@ -6,3 +6,4 @@ targets:
       apiUrl: "https://api.github.com"
       apiToken: secret-key
       syncStrategy: Owned
+      ignoreArchived: true
