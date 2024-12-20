@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "repository-cloner"
+version = "0.0.0"                          # will be set by CI
+description = ""
+authors = ["Jan Dittrich <mail@jand.one>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+PyGithub = "^2.5"
+PyYAML = "^6.0"
+related = "^0.7"
+GitPython = "^3.1"
+click = "^8.1.7"
+
+[tool.poetry.scripts]
+repository-cloner = "repository_cloner.cli:cli"
+
+[tool.pylint.messages_control]
+disable = [
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "missing-module-docstring",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

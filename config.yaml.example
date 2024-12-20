@@ -1,0 +1,8 @@
+targets:
+  - name: github
+    basePath: "~/code"
+    type: github
+    github:
+      apiUrl: "https://api.github.com"
+      apiToken: secret-key
+      syncStrategy: Owned
